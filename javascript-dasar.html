@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Pemrograman JavaScript & DOM Manipulation - EduCode</title>
+  <meta name="description" content="Pelajari dasar-dasar JavaScript, sintaksis, variabel, fungsi, event listener, dan manipulasi DOM (Document Object Model) dengan demo aplikasi interaktif.">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Style CSS Utama -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Header Navigasi Melayang -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="html-dasar.html" class="nav-link"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+          <li><a href="html-media-tabel.html" class="nav-link"><i class="fas fa-photo-video"></i> Media & Form</a></li>
+          <li><a href="css-dasar.html" class="nav-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+          <li><a href="css-frameworks.html" class="nav-link"><i class="fas fa-layer-group"></i> Bootstrap & Tailwind</a></li>
+          <li><a href="javascript-dasar.html" class="nav-link active"><i class="fab fa-js"></i> JavaScript</a></li>
+          <li><a href="playground.html" class="nav-link"><i class="fas fa-laptop-code"></i> Playground</a></li>
+          <li><a href="kuis.html" class="nav-link"><i class="fas fa-question-circle"></i> Kuis</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Ubah Tema"><i class="fas fa-moon"></i></button>
+        <button class="mobile-menu-btn" aria-label="Buka Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay & Menu -->
+  <div class="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <div class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </div>
+      <button class="drawer-close-btn" style="background:none; border:none; color:var(--text-primary); font-size:1.2rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Beranda</a></li>
+      <li><a href="html-dasar.html" class="sidebar-link"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+      <li><a href="html-media-tabel.html" class="sidebar-link"><i class="fas fa-photo-video"></i> HTML Media & Form</a></li>
+      <li><a href="css-dasar.html" class="sidebar-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+      <li><a href="css-frameworks.html" class="sidebar-link"><i class="fas fa-layer-group"></i> Bootstrap vs Tailwind</a></li>
+      <li><a href="javascript-dasar.html" class="sidebar-link active"><i class="fab fa-js"></i> JavaScript Dasar</a></li>
+      <li><a href="playground.html" class="sidebar-link"><i class="fas fa-laptop-code"></i> Live Playground</a></li>
+      <li><a href="kuis.html" class="sidebar-link"><i class="fas fa-question-circle"></i> Kuis Interaktif</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="page-header">
+      <span class="page-category"><i class="fab fa-js"></i> Modul 5 &bull; JavaScript & Interaktivitas</span>
+      <h1 class="page-title">JavaScript Fundamentals & DOM Manipulation</h1>
+      <p class="page-description">
+        JavaScript adalah bahasa pemrograman client-side yang memberikan kemampuan interaktif pada dokumen web. Halaman ini membahas variabel, fungsi, seleksi DOM, event listener, dan aplikasi interaktif sederhana.
+      </p>
+    </div>
+
+    <div class="content-sidebar-layout">
+      <!-- Sidebar Navigasi Menu Topik Internal -->
+      <aside class="page-sidebar">
+        <div class="sidebar-title">Menu Topik</div>
+        <ul class="sidebar-links">
+          <li><a href="#js-basics" class="sidebar-link"><i class="fas fa-code"></i> Sintaks & Variabel</a></li>
+          <li><a href="#functions" class="sidebar-link"><i class="fas fa-calculator"></i> Fungsi (Functions)</a></li>
+          <li><a href="#dom-selection" class="sidebar-link"><i class="fas fa-sitemap"></i> Manipulasi DOM</a></li>
+          <li><a href="#events" class="sidebar-link"><i class="fas fa-mouse-pointer"></i> Event Handling</a></li>
+          <li><a href="#js-demos" class="sidebar-link"><i class="fas fa-play-circle"></i> Aplikasi Demo Interaktif</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+
+        <!-- ==========================================================================
+             TOPIK 1: VARIABEL & TIPE DATA JAVASCRIPT
+             Penjelasan: const untuk konstanta, let untuk variabel dinamis yang bisa diubah.
+             ========================================================================== -->
+        <section id="js-basics" class="section-block">
+          <h2 class="section-title"><i class="fas fa-code"></i> Variabel &amp; Tipe Data JavaScript</h2>
+          <p>
+            JavaScript mendukung deklarasi variabel modern menggunakan <code>const</code> (nilai tetap/konstan) dan <code>let</code> (nilai yang dapat diubah), menggantikan <code>var</code> lama.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fab fa-js"></i> JavaScript Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>// Deklarasi Variabel Modern
+const nama = "Budi";       // String
+let umur = 20;             // Number
+const isStudent = true;    // Boolean
+const hobi = ["Coding", "Membaca"]; // Array
+const profil = { kota: "Jakarta" }; // Object
+
+console.log(nama, umur, isStudent);</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Output Log</span>
+              <div style="background:var(--bg-code); color:var(--text-code); font-family:var(--font-mono); padding:1rem; border-radius:6px; font-size:0.85rem; border:1px solid rgba(255,255,255,0.1);">
+                <span style="color:#64748b;">// Output Console Browser:</span><br>
+                <span style="color:#10b981;">nama:</span> "Budi"<br>
+                <span style="color:#10b981;">umur:</span> 20<br>
+                <span style="color:#10b981;">isStudent:</span> true<br>
+                <span style="color:#10b981;">hobi:</span> ["Coding", "Membaca"]
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 2: FUNGSI (FUNCTIONS & ARROW FUNCTIONS)
+             Penjelasan: Mengelompokkan perintah agar dapat dipanggil ulang.
+             ========================================================================== -->
+        <section id="functions" class="section-block">
+          <h2 class="section-title"><i class="fas fa-calculator"></i> Fungsi (Functions)</h2>
+          <p>
+            Fungsi mengelompokkan sekumpulan perintah agar dapat dipanggil berulang kali. Dukungan Arrow Function <code>() => {}</code> mempermudah penulisan fungsi ringkas di ES6.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fab fa-js"></i> JS Function Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>// 1. Function Declaration
+function sapa(namaUser) {
+  return "Halo, " + namaUser + "!";
+}
+
+// 2. Arrow Function (ES6)
+const hitungLuas = (p, l) => p * l;
+
+console.log(sapa("Erika"));
+console.log("Luas:", hitungLuas(5, 4));</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview Result</span>
+              <div style="background:var(--accent-soft); padding:1rem; border-radius:6px; border:1px solid var(--accent-primary);">
+                <strong>Hasil Eksekusi Fungsi:</strong>
+                <p style="margin-top:0.25rem; color:var(--accent-primary); font-weight:700;">sapa("Erika") &rarr; "Halo, Erika!"</p>
+                <p style="margin-top:0.25rem; color:var(--accent-primary); font-weight:700;">hitungLuas(5, 4) &rarr; 20</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 3: MANIPULASI DOM (DOCUMENT OBJECT MODEL)
+             Penjelasan: Mengakses elemen HTML via JS (document.querySelector) & mengubah isi/gaya.
+             ========================================================================== -->
+        <section id="dom-selection" class="section-block">
+          <h2 class="section-title"><i class="fas fa-sitemap"></i> Manipulasi DOM (Document Object Model)</h2>
+          <p>
+            DOM menganggap elemen HTML sebagai objek yang dapat diakses dan diubah secara dinamis melalui JavaScript menggunakan <code>document.getElementById()</code> atau <code>document.querySelector()</code>.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fab fa-js"></i> DOM Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>// Memilih Elemen
+const Judul = document.querySelector("#judul-demo");
+
+// Mengubah Teks & Style
+Judul.innerText = "Teks Diubah via JS!";
+Judul.style.color = "#6366f1";
+Judul.classList.add("highlight");</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview DOM Target</span>
+              <div style="text-align:center;">
+                <h4 id="judul-demo" style="transition:all 0.3s ease; font-weight:800;">Teks Asli Sebelum Diubah</h4>
+                <button onclick="document.getElementById('judul-demo').innerText = 'Tercapai! Teks Berhasil Diubah via DOM!'; document.getElementById('judul-demo').style.color = '#6366f1';" class="btn btn-primary btn-sm" style="margin-top:0.5rem;">
+                  Ubah Teks Judul
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 4: EVENT LISTENER HANDLING
+             Penjelasan: Merespons aksi interaksi pengguna (klik, pengetikan, submit form).
+             ========================================================================== -->
+        <section id="events" class="section-block">
+          <h2 class="section-title"><i class="fas fa-mouse-pointer"></i> Event Listener Handling</h2>
+          <p>
+            Event Listener merespons aksi pengguna seperti klik mouse (<code>click</code>), pengetikan keyboard (<code>keyup</code>), atau pengisian formulir (<code>input</code>).
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fab fa-js"></i> Event Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>const tombol = document.getElementById("myBtn");
+
+tombol.addEventListener("click", (event) => {
+  alert("Event Klik Terdeteksi!");
+});</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Demo Event</span>
+              <button onclick="alert('Event Klik Berhasil Dipicu!');" class="btn btn-gradient btn-sm">
+                <i class="fas fa-hand-pointer"></i> Klik Untuk Memicu Event
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 5: 3 DEMO APLIKASI INTERAKTIF MINI
+             (1. Counter App, 2. Dynamic Box Stylist, 3. Mini Todo List)
+             ========================================================================== -->
+        <section id="js-demos" class="section-block">
+          <h2 class="section-title"><i class="fas fa-play-circle"></i> Demo Aplikasi Interaktif Mini</h2>
+          <p>Di bawah ini adalah 3 contoh aplikasi mini yang dibangun sepenuhnya dengan JavaScript Vanilla:</p>
+
+          <!-- Demo 1: Counter App -->
+          <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.5rem; border-radius:var(--radius-md); margin-bottom:1.5rem;">
+            <h4 style="font-weight:800; color:var(--accent-primary);"><i class="fas fa-calculator"></i> 1. Aplikasi Hitung (Counter App)</h4>
+            <p style="font-size:0.875rem; color:var(--text-secondary); margin-bottom:1rem;">Uji event click untuk menambah, mengurang, dan mereset nilai counter.</p>
+            
+            <div style="display:flex; align-items:center; gap:1.5rem;">
+              <div id="demo-counter-val" style="font-size:2.5rem; font-weight:800; color:var(--text-primary); min-width:60px; text-align:center;">0</div>
+              <div style="display:flex; gap:0.5rem;">
+                <button id="demo-inc-btn" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</button>
+                <button id="demo-dec-btn" class="btn btn-secondary btn-sm"><i class="fas fa-minus"></i> Kurang</button>
+                <button id="demo-reset-btn" class="btn btn-secondary btn-sm"><i class="fas fa-redo"></i> Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo 2: Dynamic Box Styling -->
+          <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.5rem; border-radius:var(--radius-md); margin-bottom:1.5rem;">
+            <h4 style="font-weight:800; color:var(--accent-secondary);"><i class="fas fa-palette"></i> 2. Pengubah Gaya Box Real-time</h4>
+            <p style="font-size:0.875rem; color:var(--text-secondary); margin-bottom:1rem;">Ubah warna background dan teks elemen secara langsung melalui input DOM.</p>
+
+            <div class="grid-2" style="align-items:center;">
+              <div>
+                <div class="form-group mb-2">
+                  <label class="form-label">Pilih Warna Background:</label>
+                  <input type="color" id="demo-color-picker" value="#6366f1" style="width:100%; height:40px; cursor:pointer;">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tulis Teks Dalam Box:</label>
+                  <input type="text" id="demo-text-input" class="form-control" placeholder="Ketik teks di sini...">
+                </div>
+              </div>
+
+              <div id="demo-box-target" style="background:#6366f1; color:white; padding:2rem; border-radius:var(--radius-md); text-align:center; font-weight:800; transition:all 0.3s ease;">
+                Kotak Interaktif
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo 3: Mini Todo List -->
+          <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.5rem; border-radius:var(--radius-md);">
+            <h4 style="font-weight:800; color:#10b981;"><i class="fas fa-tasks"></i> 3. Mini Todo List (Manipulasi Array &amp; DOM)</h4>
+            <p style="font-size:0.875rem; color:var(--text-secondary); margin-bottom:1rem;">Tambah dan hapus item tugas secara interaktif.</p>
+
+            <form id="demo-todo-form" style="display:flex; gap:0.5rem; margin-bottom:1rem;">
+              <input type="text" id="demo-todo-input" class="form-control" placeholder="Tambahkan tugas baru..." required>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
+            </form>
+
+            <ul id="demo-todo-list" style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; padding:0;">
+              <!-- Item todo akan dimasukkan secara dinamis via JavaScript -->
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Bawah -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon"><i class="fas fa-code"></i></div>
+          <div class="brand-text">Edu<span>Code</span></div>
+        </div>
+        <p>Platform edukasi web development statis terpadu untuk mempelajari HTML, CSS, JavaScript, Bootstrap, dan Tailwind CSS secara praktis.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Materi JS</h4>
+        <ul class="footer-links">
+          <li><a href="javascript-dasar.html#js-basics">Variabel & Data Types</a></li>
+          <li><a href="javascript-dasar.html#functions">Fungsi & Arrow Function</a></li>
+          <li><a href="javascript-dasar.html#dom-selection">Manipulasi DOM</a></li>
+          <li><a href="javascript-dasar.html#events">Event Listener</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Modul Lain</h4>
+        <ul class="footer-links">
+          <li><a href="html-dasar.html">HTML Dasar</a></li>
+          <li><a href="css-dasar.html">CSS Dasar</a></li>
+          <li><a href="css-frameworks.html">Bootstrap & Tailwind</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Uji Kode</h4>
+        <ul class="footer-links">
+          <li><a href="playground.html">Live Playground Editor</a></li>
+          <li><a href="kuis.html">Kuis Evaluasi</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 EduCode - Platform Edukasi Web Development.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

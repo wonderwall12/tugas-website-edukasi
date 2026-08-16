@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi Framework CSS: Bootstrap 5 vs Tailwind CSS - EduCode</title>
+  <meta name="description" content="Pelajari dan bandingkan dua kerangka kerja CSS paling populer: Bootstrap 5 (Component-first) dan Tailwind CSS (Utility-first) dengan contoh komponen interaktif.">
+  
+  <!-- Pustaka Ikon FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Bootstrap 5 CDN untuk Menyajikan Komponen Bawaan Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Tailwind CSS Play CDN untuk Menyajikan Utility-First Classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Konfigurasi Tambahan Tailwind agar tidak merusak reset gaya bawaan
+    tailwind.config = {
+      corePlugins: { preflight: false },
+    }
+  </script>
+
+  <!-- Style CSS Utama Aplikasi -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Header Navigasi Melayang -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="html-dasar.html" class="nav-link"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+          <li><a href="html-media-tabel.html" class="nav-link"><i class="fas fa-photo-video"></i> Media & Form</a></li>
+          <li><a href="css-dasar.html" class="nav-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+          <li><a href="css-frameworks.html" class="nav-link active"><i class="fas fa-layer-group"></i> Bootstrap & Tailwind</a></li>
+          <li><a href="javascript-dasar.html" class="nav-link"><i class="fab fa-js"></i> JavaScript</a></li>
+          <li><a href="playground.html" class="nav-link"><i class="fas fa-laptop-code"></i> Playground</a></li>
+          <li><a href="kuis.html" class="nav-link"><i class="fas fa-question-circle"></i> Kuis</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Ubah Tema"><i class="fas fa-moon"></i></button>
+        <button class="mobile-menu-btn" aria-label="Buka Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay & Menu -->
+  <div class="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <div class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </div>
+      <button class="drawer-close-btn" style="background:none; border:none; color:var(--text-primary); font-size:1.2rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Beranda</a></li>
+      <li><a href="html-dasar.html" class="sidebar-link"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+      <li><a href="html-media-tabel.html" class="sidebar-link"><i class="fas fa-photo-video"></i> HTML Media & Form</a></li>
+      <li><a href="css-dasar.html" class="sidebar-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+      <li><a href="css-frameworks.html" class="sidebar-link active"><i class="fas fa-layer-group"></i> Bootstrap vs Tailwind</a></li>
+      <li><a href="javascript-dasar.html" class="sidebar-link"><i class="fab fa-js"></i> JavaScript Dasar</a></li>
+      <li><a href="playground.html" class="sidebar-link"><i class="fas fa-laptop-code"></i> Live Playground</a></li>
+      <li><a href="kuis.html" class="sidebar-link"><i class="fas fa-question-circle"></i> Kuis Interaktif</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Wrapper -->
+  <main class="main-wrapper">
+    <div class="page-header">
+      <span class="page-category"><i class="fas fa-layer-group"></i> Modul 4 &bull; CSS Frameworks</span>
+      <h1 class="page-title">Bootstrap 5 vs Tailwind CSS</h1>
+      <p class="page-description">
+        CSS Framework mempercepat proses pembuatan tampilan web responsif. Halaman ini membahas filosofi <strong>Bootstrap 5 (Component-Based)</strong> dan <strong>Tailwind CSS (Utility-First)</strong> serta contoh perbandingan komponen secara langsung.
+      </p>
+    </div>
+
+    <div class="content-sidebar-layout">
+      <!-- Sidebar Navigasi Menu Topik Internal -->
+      <aside class="page-sidebar">
+        <div class="sidebar-title">Menu Topik</div>
+        <ul class="sidebar-links">
+          <li><a href="#intro-frameworks" class="sidebar-link"><i class="fas fa-info-circle"></i> Pengenalan Framework</a></li>
+          <li><a href="#bootstrap-section" class="sidebar-link"><i class="fab fa-bootstrap"></i> Bootstrap 5 Guide</a></li>
+          <li><a href="#tailwind-section" class="sidebar-link"><i class="fas fa-wind"></i> Tailwind CSS Guide</a></li>
+          <li><a href="#comparison" class="sidebar-link"><i class="fas fa-balance-scale"></i> Perbandingan Komponen</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+
+        <!-- ==========================================================================
+             TOPIK 1: PENGENALAN FRAMEWORK CSS
+             Penjelasan: Perbedaan mendasar Component-First (Bootstrap) vs Utility-First (Tailwind).
+             ========================================================================== -->
+        <section id="intro-frameworks" class="section-block">
+          <h2 class="section-title"><i class="fas fa-info-circle"></i> Mengapa Menggunakan Framework CSS?</h2>
+          <p>
+            Framework CSS menyediakan kumpulan gaya siap pakai yang konsisten, mempercepat pengembangan UI, dan menjamin responsivitas di berbagai ukuran layar device.
+          </p>
+
+          <div class="grid-2" style="margin-top: 1.5rem;">
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.25rem; border-radius:var(--radius-md);">
+              <h4 style="color:#7952b3; font-size:1.15rem; font-weight:800;"><i class="fab fa-bootstrap"></i> Bootstrap 5 (Component-Based)</h4>
+              <p style="font-size:0.875rem; color:var(--text-secondary); margin-top:0.5rem;">
+                Menyediakan komponen UI siap pakai seperti Navbar, Card, Modal, Carousel, dan Button. Sangat cepat untuk prototyping dan aplikasi admin dashboard.
+              </p>
+            </div>
+
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.25rem; border-radius:var(--radius-md);">
+              <h4 style="color:#06b6d4; font-size:1.15rem; font-weight:800;"><i class="fas fa-wind"></i> Tailwind CSS (Utility-First)</h4>
+              <p style="font-size:0.875rem; color:var(--text-secondary); margin-top:0.5rem;">
+                Menyediakan ribuan class utilitas atomik kecil seperti <code>flex</code>, <code>p-4</code>, <code>bg-blue-500</code>. Memberikan kebebasan kustomisasi desain 100% tanpa menulis CSS custom secara manual.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 2: BOOTSTRAP 5 FUNDAMENTALS & COMPONENT DEMO
+             ========================================================================== -->
+        <section id="bootstrap-section" class="section-block">
+          <h2 class="section-title" style="color:#7952b3;"><i class="fab fa-bootstrap"></i> Bootstrap 5 Fundamentals</h2>
+          <p>
+            Bootstrap mengandalkan Sistem Grid 12 Kolom (<code>container</code>, <code>row</code>, <code>col-*</code>) serta class komponen bawaan.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fab fa-bootstrap"></i> Bootstrap 5 Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;!-- Grid System &amp; Card Bootstrap --&gt;
+&lt;div class="container py-2"&gt;
+  &lt;div class="row g-3"&gt;
+    &lt;div class="col-md-6"&gt;
+      &lt;div class="card shadow-sm border-0"&gt;
+        &lt;div class="card-body"&gt;
+          &lt;span class="badge bg-primary mb-2"&gt;Bootstrap 5&lt;/span&gt;
+          &lt;h5 class="card-title"&gt;Kartu Bootstrap&lt;/h5&gt;
+          &lt;p class="card-text text-muted"&gt;Menggunakan class bawaan card, card-body, dan badge.&lt;/p&gt;
+          &lt;button class="btn btn-primary"&gt;Tombol Primary&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Render Bootstrap</span>
+              <!-- Demo Komponen Asli Bootstrap 5 -->
+              <div class="container py-2">
+                <div class="card shadow-sm border-0" style="background:var(--bg-card); color:var(--text-primary); border:1px solid var(--border-color) !important;">
+                  <div class="card-body">
+                    <span class="badge bg-primary mb-2"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+                    <h5 class="card-title text-primary font-weight-bold" style="font-size:1.1rem;">Kartu Komponen Bootstrap</h5>
+                    <p class="card-text text-muted small">Dibuat menggunakan komponen bawaan Bootstrap tanpa menulis 1 baris pun CSS custom.</p>
+                    <button class="btn btn-primary btn-sm"><i class="fas fa-check"></i> Tombol Bootstrap</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 3: TAILWIND CSS FUNDAMENTALS & UTILITY DEMO
+             ========================================================================== -->
+        <section id="tailwind-section" class="section-block">
+          <h2 class="section-title" style="color:#06b6d4;"><i class="fas fa-wind"></i> Tailwind CSS Fundamentals</h2>
+          <p>
+            Tailwind tidak memiliki class <code>.card</code> atau <code>.btn</code>. Sebagai gantinya, Anda menggabungkan class utilitas langsung di HTML.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-wind"></i> Tailwind Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;!-- Tailwind Utility Classes --&gt;
+&lt;div class="p-4 max-w-sm bg-white rounded-xl shadow-md space-y-2 border border-gray-100"&gt;
+  &lt;span class="inline-block px-3 py-1 text-xs font-semibold text-cyan-800 bg-cyan-100 rounded-full"&gt;
+    Tailwind CSS
+  &lt;/span&gt;
+  &lt;h4 class="text-lg font-bold text-gray-900"&gt;Utility-First UI&lt;/h4&gt;
+  &lt;p class="text-sm text-gray-500"&gt;Dirakit dengan class utilitas p-4, bg-white, shadow-md.&lt;/p&gt;
+  &lt;button class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 text-sm font-medium"&gt;
+    Tombol Tailwind
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Render Tailwind</span>
+              <!-- Demo Komponen Asli Tailwind CSS Play CDN -->
+              <div class="p-4 max-w-sm bg-white rounded-xl shadow-md space-y-2 border border-gray-200" style="color:#1e293b;">
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-cyan-800 bg-cyan-100 rounded-full">
+                  <i class="fas fa-wind"></i> Tailwind CSS
+                </span>
+                <h4 class="text-lg font-bold text-gray-900">Utility-First UI Card</h4>
+                <p class="text-sm text-gray-600">Dirakit dengan class utilitas p-4, bg-white, shadow-md, text-sm, rounded-xl.</p>
+                <button class="px-4 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 text-sm font-medium transition">
+                  <i class="fas fa-bolt"></i> Tombol Tailwind
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 4: PERBANDINGAN PERDAMPINGAN (SIDE-BY-SIDE COMPARISON)
+             (Vanilla CSS vs Bootstrap 5 vs Tailwind CSS)
+             ========================================================================== -->
+        <section id="comparison" class="section-block">
+          <h2 class="section-title"><i class="fas fa-balance-scale"></i> Perbandingan Studi Kasus Komponen</h2>
+          <p>
+            Berikut adalah perbandingan berdampingan pembuatan Komponen Kartu Profil Pengguna (User Profile Card) menggunakan Vanilla CSS vs Bootstrap 5 vs Tailwind CSS:
+          </p>
+
+          <div class="grid-3" style="margin-top: 1.5rem;">
+            <!-- 1. Custom Vanilla CSS -->
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.25rem; border-radius:var(--radius-md);">
+              <h4 style="font-size:0.95rem; font-weight:800; color:var(--accent-primary); margin-bottom:1rem;">1. Vanilla Custom CSS</h4>
+              <div style="background:var(--bg-card); padding:1rem; border-radius:8px; border:1px solid var(--border-color); text-align:center;">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" style="width:64px; height:64px; border-radius:50%; object-fit:cover; margin-bottom:0.5rem;" alt="User Avatar">
+                <h5 style="font-size:0.95rem; font-weight:700; margin:0;">Sarah Amalia</h5>
+                <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.75rem;">Web Designer</p>
+                <button class="btn btn-primary btn-sm" style="width:100%;">Follow</button>
+              </div>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.75rem;">
+                Membutuhkan berkas <code>style.css</code> terpisah dengan aturan class custom.
+              </p>
+            </div>
+
+            <!-- 2. Bootstrap 5 -->
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.25rem; border-radius:var(--radius-md);">
+              <h4 style="font-size:0.95rem; font-weight:800; color:#7952b3; margin-bottom:1rem;">2. Bootstrap 5</h4>
+              <div class="card p-3 text-center shadow-sm" style="border-radius:8px;">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" class="rounded-circle mx-auto mb-2" style="width:64px; height:64px; object-fit:cover;" alt="User Avatar">
+                <h5 class="card-title h6 fw-bold mb-0 text-dark">Sarah Amalia</h5>
+                <p class="card-text small text-muted mb-2">Web Designer</p>
+                <button class="btn btn-purple btn-sm text-white" style="background:#7952b3;">Follow</button>
+              </div>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.75rem;">
+                Cukup gunakan class bawaan: <code>card</code>, <code>rounded-circle</code>, <code>btn</code>.
+              </p>
+            </div>
+
+            <!-- 3. Tailwind CSS -->
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1.25rem; border-radius:var(--radius-md);">
+              <h4 style="font-size:0.95rem; font-weight:800; color:#06b6d4; margin-bottom:1rem;">3. Tailwind CSS</h4>
+              <div class="p-4 bg-white rounded-lg shadow border border-gray-200 text-center">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" class="w-16 h-16 rounded-full mx-auto mb-2 object-cover" alt="User Avatar">
+                <h5 class="font-bold text-gray-900 text-sm">Sarah Amalia</h5>
+                <p class="text-xs text-gray-500 mb-3">Web Designer</p>
+                <button class="w-full py-1.5 bg-cyan-600 text-white rounded text-xs font-semibold hover:bg-cyan-700">Follow</button>
+              </div>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.75rem;">
+                Semua styling ditulis dalam atribut class <code>w-16 h-16 rounded-full</code>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Bawah -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon"><i class="fas fa-code"></i></div>
+          <div class="brand-text">Edu<span>Code</span></div>
+        </div>
+        <p>Platform edukasi web development statis terpadu untuk mempelajari HTML, CSS, JavaScript, Bootstrap, dan Tailwind CSS secara praktis.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Frameworks</h4>
+        <ul class="footer-links">
+          <li><a href="css-frameworks.html#bootstrap-section">Bootstrap 5</a></li>
+          <li><a href="css-frameworks.html#tailwind-section">Tailwind CSS</a></li>
+          <li><a href="css-frameworks.html#comparison">Perbandingan Component</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Modul Lain</h4>
+        <ul class="footer-links">
+          <li><a href="html-dasar.html">HTML Dasar</a></li>
+          <li><a href="css-dasar.html">CSS Dasar</a></li>
+          <li><a href="javascript-dasar.html">JavaScript Dasar</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Uji Kode</h4>
+        <ul class="footer-links">
+          <li><a href="playground.html">Live Playground</a></li>
+          <li><a href="kuis.html">Kuis Evaluasi</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 EduCode - Platform Edukasi Web Development.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

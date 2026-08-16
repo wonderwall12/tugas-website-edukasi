@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi HTML Media, Tabel & Form Input - EduCode</title>
+  <meta name="description" content="Pelajari tag HTML untuk Gambar (img), Audio (audio), Video (video), Tabel data (table), dan Formulir Interaktif (form, input, select, textarea, button).">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Style CSS Utama -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Floating Glass Header Navigasi -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="html-dasar.html" class="nav-link"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+          <li><a href="html-media-tabel.html" class="nav-link active"><i class="fas fa-photo-video"></i> Media & Form</a></li>
+          <li><a href="css-dasar.html" class="nav-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+          <li><a href="css-frameworks.html" class="nav-link"><i class="fas fa-layer-group"></i> Bootstrap & Tailwind</a></li>
+          <li><a href="javascript-dasar.html" class="nav-link"><i class="fab fa-js"></i> JavaScript</a></li>
+          <li><a href="playground.html" class="nav-link"><i class="fas fa-laptop-code"></i> Playground</a></li>
+          <li><a href="kuis.html" class="nav-link"><i class="fas fa-question-circle"></i> Kuis</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Ubah Tema"><i class="fas fa-moon"></i></button>
+        <button class="mobile-menu-btn" aria-label="Buka Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay & Menu -->
+  <div class="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <div class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </div>
+      <button class="drawer-close-btn" style="background:none; border:none; color:var(--text-primary); font-size:1.2rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Beranda</a></li>
+      <li><a href="html-dasar.html" class="sidebar-link"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+      <li><a href="html-media-tabel.html" class="sidebar-link active"><i class="fas fa-photo-video"></i> HTML Media & Form</a></li>
+      <li><a href="css-dasar.html" class="sidebar-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+      <li><a href="css-frameworks.html" class="sidebar-link"><i class="fas fa-layer-group"></i> Bootstrap vs Tailwind</a></li>
+      <li><a href="javascript-dasar.html" class="sidebar-link"><i class="fab fa-js"></i> JavaScript Dasar</a></li>
+      <li><a href="playground.html" class="sidebar-link"><i class="fas fa-laptop-code"></i> Live Playground</a></li>
+      <li><a href="kuis.html" class="sidebar-link"><i class="fas fa-question-circle"></i> Kuis Interaktif</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="page-header">
+      <span class="page-category"><i class="fas fa-photo-video"></i> Modul 2 &bull; Media, Tabel & Form</span>
+      <h1 class="page-title">Tag Media (Image, Audio, Video), Tabel & Formulir</h1>
+      <p class="page-description">
+        Materi ini membahas cara menyajikan konten multimedia (gambar, audio, video), menampilkan data terstruktur dengan tabel HTML, dan membuat formulir interaktif pengumpulan data pengguna.
+      </p>
+    </div>
+
+    <div class="content-sidebar-layout">
+      <!-- Sidebar Navigasi Menu Topik Internal -->
+      <aside class="page-sidebar">
+        <div class="sidebar-title">Menu Topik</div>
+        <ul class="sidebar-links">
+          <li><a href="#images" class="sidebar-link"><i class="fas fa-image"></i> Gambar (&lt;img&gt;)</a></li>
+          <li><a href="#audio" class="sidebar-link"><i class="fas fa-volume-up"></i> Audio (&lt;audio&gt;)</a></li>
+          <li><a href="#video" class="sidebar-link"><i class="fas fa-video"></i> Video (&lt;video&gt;)</a></li>
+          <li><a href="#tables" class="sidebar-link"><i class="fas fa-table"></i> Tabel (&lt;table&gt;)</a></li>
+          <li><a href="#forms" class="sidebar-link"><i class="fas fa-edit"></i> Formulir (&lt;form&gt;)</a></li>
+        </ul>
+      </aside>
+
+      <!-- Area Materi Utama -->
+      <div class="main-content">
+
+        <!-- ==========================================================================
+             TOPIK 1: TAG GAMBAR (<img>, <figure>, <figcaption>)
+             Penjelasan: <img> menyematkan berkas gambar. Atribut alt wajib untuk accessibility/SEO.
+             ========================================================================== -->
+        <section id="images" class="section-block">
+          <h2 class="section-title"><i class="fas fa-image"></i> Tag Gambar (&lt;img&gt;, &lt;figure&gt;, &lt;figcaption&gt;)</h2>
+          <p>
+            Tag <code>&lt;img&gt;</code> menyematkan gambar pada halaman web. Digabungkan dengan <code>&lt;figure&gt;</code> dan <code>&lt;figcaption&gt;</code> untuk memberikan keterangan gambar semantik.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Image Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;figure style="text-align: center;"&gt;
+  &lt;img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&amp;q=80" 
+       alt="Laptop menampilkan kode program HTML CSS" 
+       title="Pengembangan Web Modern"
+       style="width: 100%; max-width: 400px; border-radius: 8px;"&gt;
+  &lt;figcaption style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;"&gt;
+    Gambar 1.1: Ilustrasi Lingkungan Coding Modern
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            </div>
+
+            <div class="demo-box" style="align-items: center;">
+              <span class="demo-label">Live Preview</span>
+              <figure style="text-align: center; margin: 0;">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80" 
+                     alt="Laptop menampilkan kode program HTML CSS" 
+                     title="Pengembangan Web Modern"
+                     style="width: 100%; max-width: 320px; border-radius: var(--radius-md); box-shadow: var(--shadow-md);">
+                <figcaption style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                  Gambar 1.1: Ilustrasi Lingkungan Coding Modern
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 2: TAG AUDIO (<audio>, <source>)
+             Penjelasan: <audio controls> menyediakan pemutar musik/suara native HTML5.
+             ========================================================================== -->
+        <section id="audio" class="section-block">
+          <h2 class="section-title"><i class="fas fa-volume-up"></i> Tag Pemutar Audio (&lt;audio&gt;)</h2>
+          <p>
+            Tag <code>&lt;audio&gt;</code> digunakan untuk memutar berkas suara atau musik secara native di peramban dengan atribut <code>controls</code>.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Audio Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;audio controls style="width: 100%;"&gt;
+  &lt;source src="https://actions.google.com/sounds/v1/ambiences/outdoor_ambient.ogg" type="audio/ogg"&gt;
+  Peramban Anda tidak mendukung pemutar audio HTML5.
+&lt;/audio&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <p style="font-size:0.875rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-music"></i> Audio Sample Sound Effect:</p>
+              <audio controls style="width: 100%;">
+                <source src="https://actions.google.com/sounds/v1/ambiences/outdoor_ambient.ogg" type="audio/ogg">
+                Peramban Anda tidak mendukung audio HTML5.
+              </audio>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 3: TAG VIDEO (<video>, poster, <source>)
+             Penjelasan: <video controls poster="..."> menyematkan video langsung.
+             ========================================================================== -->
+        <section id="video" class="section-block">
+          <h2 class="section-title"><i class="fas fa-video"></i> Tag Pemutar Video (&lt;video&gt;)</h2>
+          <p>
+            Tag <code>&lt;video&gt;</code> menyematkan pemutar video langsung di web tanpa plugin tambahan.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Video Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;video controls poster="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&amp;q=80" style="width: 100%; border-radius: 8px;"&gt;
+  &lt;source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4"&gt;
+  Peramban Anda tidak mendukung video HTML5.
+&lt;/video&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <div class="media-container">
+                <video controls poster="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" style="max-height:220px; object-fit:cover;">
+                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+                  Peramban Anda tidak mendukung video HTML5.
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 4: TABEL DATA (<table>, <thead>, <tbody>, <tfoot>, <tr>, <th>, <td>, colspan)
+             Penjelasan: Menyusun data terstruktur dalam baris dan kolom.
+             ========================================================================== -->
+        <section id="tables" class="section-block">
+          <h2 class="section-title"><i class="fas fa-table"></i> Tag Tabel Data (&lt;table&gt;)</h2>
+          <p>
+            Tabel menyajikan data dalam bentuk baris (<code>&lt;tr&gt;</code>) dan kolom (<code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>). Gunakan <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, serta atribut <code>colspan</code> / <code>rowspan</code> untuk tabel kompleks.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Table Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;table class="custom-table"&gt;
+  &lt;caption&gt;Jadwal Kurikulum EduCode 2026&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;No&lt;/th&gt;
+      &lt;th&gt;Materi&lt;/th&gt;
+      &lt;th&gt;Durasi&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;HTML5 Fundamentals&lt;/td&gt;
+      &lt;td&gt;2 Jam&lt;/td&gt;
+      &lt;td style="color:#10b981;"&gt;Selesai&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;CSS3 &amp; Flexbox&lt;/td&gt;
+      &lt;td&gt;3 Jam&lt;/td&gt;
+      &lt;td style="color:#6366f1;"&gt;Sedang Belajar&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;&lt;strong&gt;Total Durasi&lt;/strong&gt;&lt;/td&gt;
+      &lt;td colspan="2"&gt;&lt;strong&gt;5 Jam&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <div class="custom-table-wrapper">
+                <table class="custom-table">
+                  <caption>Jadwal Kurikulum EduCode 2026</caption>
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Materi</th>
+                      <th>Durasi</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>HTML5 Fundamentals</td>
+                      <td>2 Jam</td>
+                      <td><span style="color:#10b981; font-weight:700;"><i class="fas fa-check-circle"></i> Selesai</span></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>CSS3 & Flexbox</td>
+                      <td>3 Jam</td>
+                      <td><span style="color:var(--accent-primary); font-weight:700;"><i class="fas fa-spinner"></i> Sedang Belajar</span></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>JavaScript Vanilla DOM</td>
+                      <td>4 Jam</td>
+                      <td><span style="color:var(--text-muted); font-weight:600;"><i class="fas fa-clock"></i> Belum</span></td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="2"><strong>Total Durasi Materi</strong></td>
+                      <td colspan="2"><strong>9 Jam Pelajaran</strong></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             TOPIK 5: FORMULIR & INPUT LENGKAP
+             (<form>, <label>, <input type="text/email/date/color/radio/checkbox">, <select>, <textarea>, <fieldset>, <legend>, <button>)
+             ========================================================================== -->
+        <section id="forms" class="section-block">
+          <h2 class="section-title"><i class="fas fa-edit"></i> Formulir &amp; Input Lengkap (&lt;form&gt;)</h2>
+          <p>
+            Formulir HTML memungkinkan pengguna memasukkan data melalui berbagai kontrol input seperti <code>text</code>, <code>email</code>, <code>password</code>, <code>number</code>, <code>date</code>, <code>color</code>, <code>file</code>, <code>range</code>, <code>radio</code>, <code>checkbox</code>, <code>select</code>, dan <code>textarea</code>.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Form Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;form action="#" method="POST" class="custom-form"&gt;
+  &lt;fieldset class="form-fieldset"&gt;
+    &lt;legend class="form-legend"&gt;Identitas Diri&lt;/legend&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;label class="form-label" for="nama"&gt;Nama Lengkap:&lt;/label&gt;
+      &lt;input type="text" id="nama" class="form-control" placeholder="Contoh: Budi Santoso" required&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;label class="form-label" for="email"&gt;Alamat Email:&lt;/label&gt;
+      &lt;input type="email" id="email" class="form-control" placeholder="nama@domain.com" required&gt;
+    &lt;/div&gt;
+
+    &lt;div class="form-group"&gt;
+      &lt;label class="form-label" for="role"&gt;Tingkat Kemampuan:&lt;/label&gt;
+      &lt;select id="role" class="form-control"&gt;
+        &lt;option value="pemula"&gt;Pemula (Baru Mulai)&lt;/option&gt;
+        &lt;option value="menengah"&gt;Menengah (Paham HTML/CSS)&lt;/option&gt;
+        &lt;option value="mahir"&gt;Mahir (Paham JS &amp; Framework)&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+
+  &lt;button type="submit" class="btn btn-primary"&gt;Kirim Formulir&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview Demo Form</span>
+              <form onsubmit="event.preventDefault(); alert('Demo Submit Formulir Berhasil!');" class="custom-form">
+                <fieldset class="form-fieldset">
+                  <legend class="form-legend"><i class="fas fa-user-edit"></i> Form Pendaftaran Siswa</legend>
+
+                  <div class="form-group">
+                    <label class="form-label" for="demo-nama">Nama Lengkap:</label>
+                    <input type="text" id="demo-nama" class="form-control" placeholder="Masukkan nama..." required>
+                  </div>
+
+                  <div class="form-group" style="margin-top:0.75rem;">
+                    <label class="form-label" for="demo-email">Alamat Email:</label>
+                    <input type="email" id="demo-email" class="form-control" placeholder="email@domain.com" required>
+                  </div>
+
+                  <div class="form-group" style="margin-top:0.75rem;">
+                    <label class="form-label" for="demo-tgl">Tanggal Lahir:</label>
+                    <input type="date" id="demo-tgl" class="form-control">
+                  </div>
+
+                  <div class="form-group" style="margin-top:0.75rem;">
+                    <label class="form-label">Jenis Kelamin (Radio):</label>
+                    <div class="radio-checkbox-group">
+                      <label class="custom-input-check"><input type="radio" name="jk" value="L" checked> Laki-Laki</label>
+                      <label class="custom-input-check"><input type="radio" name="jk" value="P"> Perempuan</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group" style="margin-top:0.75rem;">
+                    <label class="form-label">Minat Pembelajaran (Checkbox):</label>
+                    <div class="radio-checkbox-group">
+                      <label class="custom-input-check"><input type="checkbox" checked> HTML5 & CSS3</label>
+                      <label class="custom-input-check"><input type="checkbox" checked> JavaScript</label>
+                      <label class="custom-input-check"><input type="checkbox"> Bootstrap & Tailwind</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group" style="margin-top:0.75rem;">
+                    <label class="form-label" for="demo-warna">Pilih Warna Favorit (Input Color):</label>
+                    <input type="color" id="demo-warna" value="#6366f1" style="height:38px; cursor:pointer; width:100%;">
+                  </div>
+
+                  <div class="form-group" style="margin-top:0.75rem;">
+                    <label class="form-label" for="demo-pesan">Pesan / Catatan (Textarea):</label>
+                    <textarea id="demo-pesan" class="form-control" placeholder="Tuliskan catatan Anda di sini..."></textarea>
+                  </div>
+                </fieldset>
+
+                <div style="display:flex; gap:0.75rem;">
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Kirim Form</button>
+                  <button type="reset" class="btn btn-secondary"><i class="fas fa-undo"></i> Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Bawah -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon"><i class="fas fa-code"></i></div>
+          <div class="brand-text">Edu<span>Code</span></div>
+        </div>
+        <p>Platform edukasi web development statis terpadu untuk mempelajari HTML, CSS, JavaScript, Bootstrap, dan Tailwind CSS secara praktis.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Materi HTML</h4>
+        <ul class="footer-links">
+          <li><a href="html-dasar.html">HTML Dasar</a></li>
+          <li><a href="html-media-tabel.html#images">Gambar & Figure</a></li>
+          <li><a href="html-media-tabel.html#audio">Audio & Video</a></li>
+          <li><a href="html-media-tabel.html#forms">Tabel & Form Input</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Modul Lanjutan</h4>
+        <ul class="footer-links">
+          <li><a href="css-dasar.html">CSS Styling</a></li>
+          <li><a href="css-frameworks.html">Bootstrap & Tailwind</a></li>
+          <li><a href="javascript-dasar.html">JavaScript DOM</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Uji Kode</h4>
+        <ul class="footer-links">
+          <li><a href="playground.html">Live Playground</a></li>
+          <li><a href="kuis.html">Kuis Sertifikat</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 EduCode - Platform Edukasi Web Development.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

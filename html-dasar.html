@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi HTML Dasar & Text Formatting - EduCode</title>
+  <meta name="description" content="Pelajari tag-tag HTML dasar seperti Heading, Paragraph, Text Formatting, Tautan (Link), Daftar (List), dan Elemen Semantik beserta contoh live demo.">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Style CSS Utama -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Header Navigasi Melayang -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+          <li><a href="html-dasar.html" class="nav-link active"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+          <li><a href="html-media-tabel.html" class="nav-link"><i class="fas fa-photo-video"></i> Media & Form</a></li>
+          <li><a href="css-dasar.html" class="nav-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+          <li><a href="css-frameworks.html" class="nav-link"><i class="fas fa-layer-group"></i> Bootstrap & Tailwind</a></li>
+          <li><a href="javascript-dasar.html" class="nav-link"><i class="fab fa-js"></i> JavaScript</a></li>
+          <li><a href="playground.html" class="nav-link"><i class="fas fa-laptop-code"></i> Playground</a></li>
+          <li><a href="kuis.html" class="nav-link"><i class="fas fa-question-circle"></i> Kuis</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Ubah Tema"><i class="fas fa-moon"></i></button>
+        <button class="mobile-menu-btn" aria-label="Buka Menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <div class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code"></i></div>
+        <div class="brand-text">Edu<span>Code</span></div>
+      </div>
+      <button class="drawer-close-btn" style="background:none; border:none; color:var(--text-primary); font-size:1.2rem; cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="index.html" class="sidebar-link"><i class="fas fa-home"></i> Beranda</a></li>
+      <li><a href="html-dasar.html" class="sidebar-link active"><i class="fab fa-html5"></i> HTML Dasar</a></li>
+      <li><a href="html-media-tabel.html" class="sidebar-link"><i class="fas fa-photo-video"></i> HTML Media & Form</a></li>
+      <li><a href="css-dasar.html" class="sidebar-link"><i class="fab fa-css3-alt"></i> CSS Dasar</a></li>
+      <li><a href="css-frameworks.html" class="sidebar-link"><i class="fas fa-layer-group"></i> Bootstrap vs Tailwind</a></li>
+      <li><a href="javascript-dasar.html" class="sidebar-link"><i class="fab fa-js"></i> JavaScript Dasar</a></li>
+      <li><a href="playground.html" class="sidebar-link"><i class="fas fa-laptop-code"></i> Live Playground</a></li>
+      <li><a href="kuis.html" class="sidebar-link"><i class="fas fa-question-circle"></i> Kuis Interaktif</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Layout -->
+  <main class="main-wrapper">
+    <!-- Header Banner Modul -->
+    <div class="page-header">
+      <span class="page-category"><i class="fab fa-html5"></i> Modul 1 &bull; HTML Dasar</span>
+      <h1 class="page-title">HTML Dasar, Heading, Formatting & List</h1>
+      <p class="page-description">
+        HTML (HyperText Markup Language) adalah bahasa standar pembuatan struktur web. Halaman ini mendemonstrasikan penggunaan tag elemen teks, judul, link, daftar, dan struktur semantik HTML.
+      </p>
+    </div>
+
+    <div class="content-sidebar-layout">
+      <!-- Navigasi Samping Internal Halaman (<aside> untuk sidebar) -->
+      <aside class="page-sidebar">
+        <div class="sidebar-title">Daftar Isi Materi</div>
+        <ul class="sidebar-links">
+          <li><a href="#headings" class="sidebar-link"><i class="fas fa-heading"></i> Heading (&lt;h1&gt;-&lt;h6&gt;)</a></li>
+          <li><a href="#paragraphs" class="sidebar-link"><i class="fas fa-paragraph"></i> Paragraph (&lt;p&gt;)</a></li>
+          <li><a href="#formatting" class="sidebar-link"><i class="fas fa-bold"></i> Text Formatting</a></li>
+          <li><a href="#links" class="sidebar-link"><i class="fas fa-link"></i> Link & Navigasi (&lt;a&gt;)</a></li>
+          <li><a href="#lists" class="sidebar-link"><i class="fas fa-list-ol"></i> List (&lt;ul&gt;, &lt;ol&gt;, &lt;dl&gt;)</a></li>
+          <li><a href="#semantic" class="sidebar-link"><i class="fas fa-sitemap"></i> Tag Semantik Layout</a></li>
+        </ul>
+      </aside>
+
+      <!-- Area Materi Utama -->
+      <div class="main-content">
+
+        <!-- ==========================================================================
+             SEKSI 1: TAG HEADING (<h1> HINGGA <h6>)
+             Penjelasan: Tag heading menentukan tingkat kepetingan hirarki teks judul.
+             ========================================================================== -->
+        <section id="headings" class="section-block">
+          <h2 class="section-title"><i class="fas fa-heading"></i> Tag Heading (&lt;h1&gt; hingga &lt;h6&gt;)</h2>
+          <p>
+            Heading dalam HTML menentukan hirarki atau tingkat kepetingan sebuah judul pada halaman. Tag <code>&lt;h1&gt;</code> mewakili judul tingkat tertinggi, sedangkan <code>&lt;h6&gt;</code> adalah tingkat terkecil.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Heading Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;h1&gt;Heading Utama Level 1 (h1)&lt;/h1&gt;
+&lt;h2&gt;Sub Judul Level 2 (h2)&lt;/h2&gt;
+&lt;h3&gt;Sub-Sub Judul Level 3 (h3)&lt;/h3&gt;
+&lt;h4&gt;Heading Level 4 (h4)&lt;/h4&gt;
+&lt;h5&gt;Heading Level 5 (h5)&lt;/h5&gt;
+&lt;h6&gt;Heading Level 6 (h6)&lt;/h6&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <!-- Demo Render Live Tag Heading h1 - h6 -->
+              <h1 style="font-size:1.75rem; font-weight:800; margin-bottom:0.25rem;">Heading Utama Level 1 (h1)</h1>
+              <h2 style="font-size:1.45rem; font-weight:700; margin-bottom:0.25rem;">Sub Judul Level 2 (h2)</h2>
+              <h3 style="font-size:1.25rem; font-weight:600; margin-bottom:0.25rem;">Sub-Sub Judul Level 3 (h3)</h3>
+              <h4 style="font-size:1.1rem; font-weight:600; margin-bottom:0.25rem;">Heading Level 4 (h4)</h4>
+              <h5 style="font-size:0.95rem; font-weight:600; margin-bottom:0.25rem;">Heading Level 5 (h5)</h5>
+              <h6 style="font-size:0.85rem; font-weight:600;">Heading Level 6 (h6)</h6>
+            </div>
+          </div>
+
+          <div class="info-callout tip">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong>Praktik Terbaik SEO:</strong> Gunakan hanya <strong>satu tag &lt;h1&gt;</strong> per halaman sebagai judul utama artikel atau produk Anda.
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEKSI 2: PARAGRAPH (<p>), LINE BREAK (<br>), & KUTIPAN (<blockquote>, <cite>)
+             ========================================================================== -->
+        <section id="paragraphs" class="section-block">
+          <h2 class="section-title"><i class="fas fa-paragraph"></i> Paragraph (&lt;p&gt;) & Kutipan</h2>
+          <p>
+            Tag <code>&lt;p&gt;</code> digunakan untuk mengelompokkan teks menjadi sebuah paragraf. HTML secara otomatis memberikan baris baru di atas dan di bawah paragraf.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Paragraph Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;p&gt;Ini adalah paragraf pertama yang menjelaskan materi HTML.&lt;/p&gt;
+&lt;p&gt;Ini adalah paragraf kedua dengan baris baru &lt;br&gt; menggunakan tag &amp;lt;br&amp;gt;.&lt;/p&gt;
+
+&lt;blockquote cite="https://w3.org"&gt;
+  "HTML adalah bahasa utama pengembang web di seluruh dunia."
+  &lt;cite&gt;— W3C Specification&lt;/cite&gt;
+&lt;/blockquote&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <p style="margin-bottom:0.75rem;">Ini adalah paragraf pertama yang menjelaskan materi HTML.</p>
+              <p style="margin-bottom:0.75rem;">Ini adalah paragraf kedua dengan baris baru<br>menggunakan tag &lt;br&gt;.</p>
+              <blockquote style="border-left:3px solid var(--accent-primary); padding-left:1rem; margin:0.5rem 0; font-style:italic; background:var(--accent-soft); padding:0.75rem; border-radius:6px;">
+                "HTML adalah bahasa utama pengembang web di seluruh dunia."
+                <cite style="display:block; text-align:right; font-size:0.85rem; margin-top:0.25rem;">— W3C Specification</cite>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEKSI 3: TEXT FORMATTING TAGS
+             (strong, em, mark, sub, sup, del, ins, code, kbd)
+             ========================================================================== -->
+        <section id="formatting" class="section-block">
+          <h2 class="section-title"><i class="fas fa-bold"></i> Text Formatting Tags</h2>
+          <p>HTML menyediakan tag khusus untuk memformat gaya visual dan memberikan makna semantik pada potongan kata/kalimat:</p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> Formatting Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;p&gt;
+  Teks &lt;strong&gt;Tebal Penting (strong)&lt;/strong&gt; dan &lt;b&gt;Biasa Tebal (b)&lt;/b&gt;.&lt;br&gt;
+  Teks &lt;em&gt;Miring Miring (em)&lt;/em&gt; dan &lt;i&gt;Italic biasa (i)&lt;/i&gt;.&lt;br&gt;
+  Teks dengan &lt;mark&gt;Sorotan Warna (mark)&lt;/mark&gt;.&lt;br&gt;
+  Formula Kimia: H&lt;sub&gt;2&lt;/sub&gt;O (subscript) dan Matematika: X&lt;sup&gt;2&lt;/sup&gt; (superscript).&lt;br&gt;
+  Harga: &lt;del&gt;Rp 100.000&lt;/del&gt; &lt;ins&gt;Rp 75.000&lt;/ins&gt;.&lt;br&gt;
+  Kode Program: &lt;code&gt;const x = 10;&lt;/code&gt; dan tombol &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt;.
+&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <p style="line-height:1.8;">
+                Teks <strong>Tebal Penting (strong)</strong> dan <b>Biasa Tebal (b)</b>.<br>
+                Teks <em>Miring Miring (em)</em> dan <i>Italic biasa (i)</i>.<br>
+                Teks dengan <mark style="background:#fef08a; padding:0 4px; border-radius:2px; color:#1e293b;">Sorotan Warna (mark)</mark>.<br>
+                Formula Kimia: H<sub>2</sub>O (subscript) dan Matematika: X<sup>2</sup> (superscript).<br>
+                Harga: <del style="color:#ef4444;">Rp 100.000</del> <ins style="color:#10b981; text-decoration:none; font-weight:700;">Rp 75.000</ins>.<br>
+                Kode Program: <code style="background:var(--bg-code); color:var(--accent-secondary); padding:2px 6px; border-radius:4px; font-family:var(--font-mono);">const x = 10;</code> dan tombol <kbd style="background:var(--bg-card); border:1px solid var(--border-color); border-bottom-width:2px; padding:2px 6px; border-radius:4px; font-size:0.8rem;">Ctrl</kbd> + <kbd style="background:var(--bg-card); border:1px solid var(--border-color); border-bottom-width:2px; padding:2px 6px; border-radius:4px; font-size:0.8rem;">C</kbd>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEKSI 4: TAUTAN ANCHOR (<a>)
+             Penjelasan: Tag <a> menghubungkan antar halaman menggunakan atribut href
+             ========================================================================== -->
+        <section id="links" class="section-block">
+          <h2 class="section-title"><i class="fas fa-link"></i> Link & Tautan (&lt;a&gt;)</h2>
+          <p>
+            Tag <code>&lt;a&gt;</code> (Anchor) digunakan untuk menghubungkan satu halaman web ke halaman lain atau ke situs eksternal menggunakan atribut <code>href</code>.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Link Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;!-- Tautan Eksternal ke Tab Baru --&gt;
+&lt;a href="https://developer.mozilla.org" target="_blank" rel="noopener"&gt;Kunjungi MDN Web Docs&lt;/a&gt;
+
+&lt;!-- Tautan Internal Halaman Lain --&gt;
+&lt;a href="html-media-tabel.html"&gt;Materi Media &amp; Tabel &amp;rarr;&lt;/a&gt;
+
+&lt;!-- Tautan Email --&gt;
+&lt;a href="mailto:support@educode.id"&gt;Kirim Email Support&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                <a href="https://developer.mozilla.org" target="_blank" rel="noopener" style="color:var(--accent-primary); font-weight:700; text-decoration:none;">
+                  <i class="fas fa-external-link-alt"></i> Kunjungi MDN Web Docs (Tab Baru)
+                </a>
+                <a href="html-media-tabel.html" style="color:var(--accent-secondary); font-weight:700; text-decoration:none;">
+                  <i class="fas fa-arrow-right"></i> Lanjut Ke Materi Media & Form
+                </a>
+                <a href="mailto:support@educode.id" style="color:var(--text-secondary); text-decoration:none;">
+                  <i class="fas fa-envelope"></i> Kirim Email Support
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEKSI 5: DAFTAR LIST (<ul>, <ol>, <dl>)
+             Penjelasan: Tag daftar berurutan (ol), tidak berurutan (ul), & deskripsi (dl).
+             ========================================================================== -->
+        <section id="lists" class="section-block">
+          <h2 class="section-title"><i class="fas fa-list-ol"></i> Tag List (&lt;ul&gt;, &lt;ol&gt;, &lt;dl&gt;)</h2>
+          <p>
+            Daftar pada HTML dikelompokkan menjadi 3 jenis: <strong>Unordered List (ul)</strong> untuk daftar poin bullet, <strong>Ordered List (ol)</strong> untuk daftar berurutan, dan <strong>Description List (dl)</strong> untuk istilah beserta definisinya.
+          </p>
+
+          <div class="demo-code-pair">
+            <div class="code-box">
+              <div class="code-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <div class="window-dots"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span></div>
+                  <span class="code-title"><i class="fas fa-code"></i> HTML Lists Code</span>
+                </div>
+                <button class="copy-btn"><i class="fas fa-copy"></i> Salin</button>
+              </div>
+              <pre class="code-content"><code>&lt;!-- Unordered List --&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML5 - Structure&lt;/li&gt;
+  &lt;li&gt;CSS3 - Styling&lt;/li&gt;
+  &lt;li&gt;JavaScript - Logic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered List --&gt;
+&lt;ol type="1"&gt;
+  &lt;li&gt;Buka Editor Kode&lt;/li&gt;
+  &lt;li&gt;Tulis Kode HTML&lt;/li&gt;
+  &lt;li&gt;Buka di Browser&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Description List --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+            </div>
+
+            <div class="demo-box">
+              <span class="demo-label">Live Preview</span>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div>
+                  <strong>Unordered List (&lt;ul&gt;):</strong>
+                  <ul style="padding-left:1.25rem; margin-top:0.5rem;">
+                    <li>HTML5 - Structure</li>
+                    <li>CSS3 - Styling</li>
+                    <li>JavaScript - Logic</li>
+                  </ul>
+                </div>
+                <div>
+                  <strong>Ordered List (&lt;ol&gt;):</strong>
+                  <ol style="padding-left:1.25rem; margin-top:0.5rem;">
+                    <li>Buka Editor Kode</li>
+                    <li>Tulis Kode HTML</li>
+                    <li>Buka di Browser</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div style="margin-top:1rem; border-top:1px dashed var(--border-color); padding-top:0.75rem;">
+                <strong>Description List (&lt;dl&gt;):</strong>
+                <dl style="margin-top:0.5rem;">
+                  <dt style="font-weight:700; color:var(--accent-primary);">HTML</dt>
+                  <dd style="margin-left:1rem; margin-bottom:0.5rem; color:var(--text-secondary);">HyperText Markup Language</dd>
+                  <dt style="font-weight:700; color:var(--accent-primary);">CSS</dt>
+                  <dd style="margin-left:1rem; color:var(--text-secondary);">Cascading Style Sheets</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             SEKSI 6: TAG SEMANTIK LAYOUT HTML5
+             (header, nav, main, article, section, aside, footer)
+             ========================================================================== -->
+        <section id="semantic" class="section-block">
+          <h2 class="section-title"><i class="fas fa-sitemap"></i> Elemen Semantik Layout HTML5</h2>
+          <p>
+            Elemen semantik memberikan makna struktural bagi peramban dan mesin pencari (SEO) dibanding tag netral seperti <code>&lt;div&gt;</code>:
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-top:1.5rem;">
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-md);">
+              <h4 style="color:var(--accent-primary);"><i class="fas fa-window-maximize"></i> &lt;header&gt;</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">Berisi logo, navigasi utama, atau judul dokumen.</p>
+            </div>
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-md);">
+              <h4 style="color:var(--accent-primary);"><i class="fas fa-compass"></i> &lt;nav&gt;</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">Wadah khusus daftar tautan navigasi utama.</p>
+            </div>
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-md);">
+              <h4 style="color:var(--accent-primary);"><i class="fas fa-file-alt"></i> &lt;main&gt;</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">Wadah konten utama yang unik per halaman.</p>
+            </div>
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-md);">
+              <h4 style="color:var(--accent-primary);"><i class="fas fa-newspaper"></i> &lt;article&gt; &amp; &lt;section&gt;</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">Mengelompokkan ide artikel berserta bab/bagiannya.</p>
+            </div>
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-md);">
+              <h4 style="color:var(--accent-primary);"><i class="fas fa-columns"></i> &lt;aside&gt;</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">Berisi sidebar, iklan, atau informasi pelengkap.</p>
+            </div>
+            <div style="background:var(--bg-canvas); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-md);">
+              <h4 style="color:var(--accent-primary);"><i class="fas fa-window-minimize"></i> &lt;footer&gt;</h4>
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">Berisi hak cipta, kontak, atau tautan tambahan bawah.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Bawah -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="brand-icon"><i class="fas fa-code"></i></div>
+          <div class="brand-text">Edu<span>Code</span></div>
+        </div>
+        <p>Platform edukasi web development statis terpadu untuk mempelajari HTML, CSS, JavaScript, Bootstrap, dan Tailwind CSS secara praktis.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navigasi Modul</h4>
+        <ul class="footer-links">
+          <li><a href="html-dasar.html">HTML Dasar</a></li>
+          <li><a href="html-media-tabel.html">Media & Form</a></li>
+          <li><a href="css-dasar.html">CSS Dasar</a></li>
+          <li><a href="css-frameworks.html">Bootstrap & Tailwind</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Interaktif</h4>
+        <ul class="footer-links">
+          <li><a href="javascript-dasar.html">JavaScript Dasar</a></li>
+          <li><a href="playground.html">Live Code Playground</a></li>
+          <li><a href="kuis.html">Kuis Evaluasi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Hak Cipta</h4>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Dibuat menggunakan HTML5 & CSS Modern.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 EduCode - Platform Edukasi Web Development.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
